@@ -9,7 +9,7 @@ on:
 
 env:
   UPDATE_IPV4: true
-  UPDATE_IPV6: false
+  UPDATE_IPV6: true
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
         if: env.UPDATE_IPV6 == 'true' && !cancelled()
         env:
           KEY: ${{ secrets.KEY }}
-          DOMAINS: ${{ secrets.DOMAINSV6 }}
+          DOMAINS: ${{ secrets.DOMAINS }}
           SECRETID: ${{ secrets.SECRETID }}
           SECRETKEY: ${{ secrets.SECRETKEY }}
         run: python cf2dns_actions.py AAAA
